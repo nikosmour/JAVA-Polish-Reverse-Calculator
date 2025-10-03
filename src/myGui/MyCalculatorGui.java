@@ -5,18 +5,13 @@ import java.awt.event.*;
 
 public class MyCalculatorGui extends Frame {
 	//public Button button0;
-	private Button_numberrpn []button_number;
-	//private Button_numberrpn button_dot;
-	private Button_enter_reset_back button_enter,button_back,button_c,button_ce;
-	//private Rectangle [] rec;
-	private Button_praxeis button_sum,button_div,button_mul,button_sub,button_ison;
 	private TextField display;
 	
 	public MyCalculatorGui(Operand op,Adder add ,Subtracter sub,Multiplier mul,Divider div,ResultPresenter rp){
 		
 		
 		super("JAVA Polish Reverse Calculator by me");
-		final long serialVersionUID = 1L;
+		//final long serialVersionUID = 1L;
 		
 		this.setLayout(null);
 		this.setFont(new Font("Arial Bold", Font.PLAIN, 12) );// To set the font of this container.
@@ -34,23 +29,21 @@ public class MyCalculatorGui extends Frame {
 		//Sets whether this frame is resizable by the user.
 		
 		
-		button_number=new Button_numberrpn [10];
-		button_number[0]=new Button_numberrpn(this,(char) (0 +'0'),op,new Rectangle(65 + 40 , 232 + 33, 35, 28),rp);
-		for(int i =1 ;i<button_number.length;i++){
-			button_number[i]=new Button_numberrpn(this,(char) (i +'0'),op,new Rectangle(65 + 40 * ((i-1) %3), 232- 33 *((int)((i-1) /3)), 35, 28),rp);
+		new Button_numberrpn(this,(char) (0 +'0'),op,new Rectangle(65 + 40 , 232 + 33, 35, 28),rp);
+		for(int i =1 ;i<10;i++){
+			new Button_numberrpn(this,(char) (i +'0'),op,new Rectangle(65 + 40 * ((i-1) %3), 232- 33 *((int)((i-1) /3)), 35, 28),rp);
 		}
-		//button_dot =new Button_numberrpn(this,'.',op,new Rectangle(144, 265, 35, 28 ),rp);
+		new Button_numberrpn(this,'.',op,new Rectangle(144, 265, 35, 28 ),rp);
+		new Button_enter_reset_back(this,"enter",op,new Rectangle(204, 100, 56, 28 ),rp);
+		new Button_enter_reset_back(this,"backspace",op,new Rectangle(64, 100, 75, 28 ),rp);
+		new Button_enter_reset_back(this,"C",op,new Rectangle(144, 100, 35, 28  ),rp);
+		new Button_enter_reset_back(this,"CE",op,new Rectangle(144, 133, 35, 28  ),rp);
 		
-		button_enter=new Button_enter_reset_back(this,"enter",op,new Rectangle(204, 100, 56, 28 ),rp);
-		button_back=new Button_enter_reset_back(this,"backspace",op,new Rectangle(64, 100, 75, 28 ),rp);
-		button_c=new Button_enter_reset_back(this,"C",op,new Rectangle(144, 100, 35, 28  ),rp);
-		button_ce=new Button_enter_reset_back(this,"CE",op,new Rectangle(144, 133, 35, 28  ),rp);
-		
-		button_sum = new Button_praxeis(this,"+",new Rectangle(195, 265,35,28  ),add);
-		button_div = new Button_praxeis(this,"/",new Rectangle(195,166, 35, 28 ),div);
-		button_mul = new Button_praxeis(this,"*",new Rectangle(195,199, 35, 28  ),mul);
-		button_sub = new Button_praxeis(this,"-",new Rectangle(195,232,35,28 ),sub);
-		button_ison = new Button_praxeis(this,"=",new Rectangle(235,265, 35, 28  ),rp);
+		new Button_praxeis(this,"+",new Rectangle(195, 265,35,28  ),add);
+		new Button_praxeis(this,"/",new Rectangle(195,166, 35, 28 ),div);
+		new Button_praxeis(this,"*",new Rectangle(195,199, 35, 28  ),mul);
+		new Button_praxeis(this,"-",new Rectangle(195,232,35,28 ),sub);
+		new Button_praxeis(this,"=",new Rectangle(235,265, 35, 28  ),rp);
 		display = new TextField("0",14);
 		this.add(display);
 		display.setEditable(false);
@@ -133,11 +126,14 @@ class ButtonHandler_enter_reset_back implements ActionListener
 	{ frame=f;this.str = str;oper = op;rpr=rp;}
 
 	public void actionPerformed(ActionEvent pushingButton0)
-	{ 	if (str == "enter"){
+	{
+	  if (str == "enter"){
 			oper.complete();
 		}else if (str == "backspace"){
 			oper.deleteLastDigit();
-		}else if (str == "C" || str == "CE" ){
+		}else if (str == "CE" ){
+			oper.clear();
+		}else if (str == "C" ){
 			oper.reset();
 		}
 	}
