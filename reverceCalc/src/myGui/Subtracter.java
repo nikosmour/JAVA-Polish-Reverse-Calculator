@@ -2,18 +2,15 @@ package myGui;
 
 import java.util.Stack;
 
-public class Subtracter implements Praxeis {
-	private Stack <Integer> st;
-	public Subtracter(Stack <Integer> st) {
-		this.st=st;
-		
+public class Subtracter extends Operator {
+	public Subtracter(ResultPresenter rp,Stack<Integer> st) {
+		super(rp,st);
 	}
 	
 	public void operate(){
-		if (st.size()>1){
-			st.push(0-st.pop() + st.pop());
-			//CalculatorGui.display.setText(new String(""+Calc.st.peek()));
-		}
+		if (st.size()>1) st.push(0-st.pop() + st.pop());
+		else if (st.size()==1 ) rp.error("Eiparxei mono enas arithmos sthn stoiba den mporei na ginei h praxh");
+		else rp.error("Stack Empty");
 	}
 
 }

@@ -1,17 +1,13 @@
 package myGui;
 
 import java.util.Stack;
-
-public class Adder implements Praxeis{
-	private Stack <Integer> st;
-	public Adder(Stack <Integer> st) {
-		this.st=st;
-		
+public class Adder extends Operator {
+	public Adder(ResultPresenter rp,Stack<Integer> st) {
+		super(rp,st);
 	}
 	public void operate(){
-		if (st.size()>1){
-			st.push(st.pop() + st.pop());
-			//CalculatorGui.display.setText(new String(""+Calc.st.peek()));
-		}
+		if (st.size()>1) st.push(st.pop() + st.pop());
+		else if (st.size()==1 ) rp.error("Eiparxei mono enas arithmos sthn stoiba den mporei na ginei h praxh");
+		else rp.error("Stack Empty");
 	}
 }

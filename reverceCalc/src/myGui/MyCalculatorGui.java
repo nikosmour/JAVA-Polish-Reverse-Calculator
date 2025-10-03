@@ -94,17 +94,21 @@ class Button_enter_reset_back extends Button{
 	 }
 }
 
-class Button_praxeis extends Button{
-	
-	 public Button_praxeis(Frame frame,String str,Rectangle rec,Praxeis pr){
+class Button_praxeis extends Button implements ActionListener
+{
+	Praxeis pr;
+	 public Button_praxeis(Frame frame,String str,Rectangle rec,Praxeis rp){
 		 	super(str);
+		 	this.pr=rp;
 			frame.add(this);
 			this.setBounds(rec);
 			this.setFont(new Font("Arial Bold", Font.PLAIN, 14));
 			this.setForeground(Color.red);
 			this.setBackground(Color.green);
-			this.addActionListener(new ButtonHandler_praxeis(frame,pr));
+			this.addActionListener( this);
 	 }
+	 public void actionPerformed(ActionEvent pushingButton0)
+		{ 	pr.operate();}
 }
 
 class ButtonHandlernumber implements ActionListener
