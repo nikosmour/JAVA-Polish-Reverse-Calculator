@@ -6,7 +6,7 @@ import java.awt.event.*;
 public class MyCalculatorGui extends Frame {
 	//public Button button0;
 	private Button_numberrpn []button_number;
-	private Button_numberrpn button_dot;
+	//private Button_numberrpn button_dot;
 	private Button_enter_reset_back button_enter,button_back,button_c,button_ce;
 	//private Rectangle [] rec;
 	private Button_praxeis button_sum,button_div,button_mul,button_sub,button_ison;
@@ -39,7 +39,7 @@ public class MyCalculatorGui extends Frame {
 		for(int i =1 ;i<button_number.length;i++){
 			button_number[i]=new Button_numberrpn(this,(char) (i +'0'),op,new Rectangle(65 + 40 * ((i-1) %3), 232- 33 *((int)((i-1) /3)), 35, 28),rp);
 		}
-		//button_dot =new Button_numberrpn(this,'.',op,new Rectangle(144, 265, 35, 28 ),rp);//#todo
+		//button_dot =new Button_numberrpn(this,'.',op,new Rectangle(144, 265, 35, 28 ),rp);
 		
 		button_enter=new Button_enter_reset_back(this,"enter",op,new Rectangle(204, 100, 56, 28 ),rp);
 		button_back=new Button_enter_reset_back(this,"backspace",op,new Rectangle(64, 100, 75, 28 ),rp);
@@ -133,14 +133,11 @@ class ButtonHandler_enter_reset_back implements ActionListener
 	{ frame=f;this.str = str;oper = op;rpr=rp;}
 
 	public void actionPerformed(ActionEvent pushingButton0)
-	{
-	  if (str == "enter"){
+	{ 	if (str == "enter"){
 			oper.complete();
 		}else if (str == "backspace"){
 			oper.deleteLastDigit();
-		}else if (str == "CE" ){
-			oper.clear();
-		}else if (str == "C" ){
+		}else if (str == "C" || str == "CE" ){
 			oper.reset();
 		}
 	}
