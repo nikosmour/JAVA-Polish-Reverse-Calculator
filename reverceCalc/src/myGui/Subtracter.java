@@ -3,7 +3,7 @@ package myGui;
 import java.util.Stack;
 
 public class Subtracter extends Operator {
-	public Subtracter(ResultPresenter rp,Stack<Integer> st) {
+	public Subtracter(ResultPresenter rp,Stack<Float> st) {
 		super(rp,st);
 	}
 	

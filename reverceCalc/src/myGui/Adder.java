@@ -2,7 +2,7 @@ package myGui;
 
 import java.util.Stack;
 public class Adder extends Operator {
-	public Adder(ResultPresenter rp,Stack<Integer> st) {
+	public Adder(ResultPresenter rp,Stack<Float> st) {
 		super(rp,st);
 	}
 	public void operate(){

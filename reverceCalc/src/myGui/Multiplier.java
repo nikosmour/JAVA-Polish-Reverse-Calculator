@@ -3,7 +3,7 @@ package myGui;
 import java.util.Stack;
 
 public class Multiplier extends Operator {
-	public Multiplier (ResultPresenter rp,Stack<Integer> st) {
+	public Multiplier (ResultPresenter rp,Stack<Float> st) {
 		super(rp,st);
 	}
 	public void operate(){

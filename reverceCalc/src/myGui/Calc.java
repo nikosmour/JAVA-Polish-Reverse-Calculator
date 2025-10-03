@@ -5,7 +5,7 @@ public class Calc {
 	
 	public Calc() {
 		// TODO Auto-generated method stub
-		Stack<Integer> st= new Stack<Integer>();
+		Stack<Float> st= new Stack<Float>();
 		ResultPresenter rp = new ResultPresenter(st);
 		Operand op = new Operand(rp,st);
 		Adder add =new Adder(rp,st);

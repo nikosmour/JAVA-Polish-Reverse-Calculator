@@ -2,9 +2,9 @@ package myGui;
 import java.awt.TextField;
 import java.util.*;
 public class ResultPresenter implements Praxeis {
-	private Stack <Integer> st;
+	private Stack <Float> st;
 	private TextField display;
-	public ResultPresenter(Stack <Integer> st) {
+	public ResultPresenter(Stack <Float> st) {
 		this.st=st;
 		
 	}
@@ -15,9 +15,9 @@ public class ResultPresenter implements Praxeis {
 		//System.out.println(Calc.st.peek().toString());
 		if (st.isEmpty()==false)
 			{display.setText(st.peek().toString());}
-		else {operate(0);}
+		else {operate("0");}
 	}
-	public void operate(int number){
+	public void operate(String number){
 		//System.out.println(""+number);
 		display.setText(""+number);
 	}
